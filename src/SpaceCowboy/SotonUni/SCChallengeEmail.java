@@ -6,18 +6,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+//Used in 'homePage()'
+import java.net.URLConnection;
+
 //Used in 'nameAnagram()'
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-//Used in 'homePage()'
-import java.net.URLConnection;
-
 public class SCChallengeEmail {
 
     public String simpleECSEmailLookup() throws IOException{
-
         System.out.println("Please input a valid Southampton email address in format userName@domainName, or just userName:");
 
         //Read from console
@@ -128,6 +127,32 @@ public class SCChallengeEmail {
             System.out.println(anagramWord);
         }
 
+    }
+
+    //Doesn't work yet
+    public void engToFrTranslation() throws IOException{
+        System.out.println("Please input what you would like to be translated to English:");
+
+        // Read from console and replace ' ' with '%20' to work with URL
+        BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
+        String english = inputReader.readLine().trim().replace(" ", "%20");
+
+        //Create google translate URL, set 'user agent header' (this is remove ERROR 403), connect to the website, and start reading the HTML
+        URLConnection connection = new URL("https://translate.google.com/?sl=en&tl=fr&text="+ english+"&op=translate").openConnection();
+        connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
+        connection.connect();
+        BufferedReader websiteReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+        String currentLine;
+        String french = "";
+
+        //Read each line, if the line contains the french translation, find it and output the answer
+        while ((currentLine = websiteReader.readLine()) != null) {
+            if(currentLine.contains("lang=\"fr\"")){
+                //Do something
+            }
+        }
+        websiteReader.close();
     }
 }
 
