@@ -30,7 +30,7 @@ public class SCChallengeEmail {
         String currentLine;
         String fullName = "";
 
-        //Read each like, if the line contains the name, assign the name and stop reading from website
+        //Read each line, if the line contains the name, assign the name and stop reading from website
         while ((currentLine = websiteReader.readLine()) != null) {
             if (currentLine.contains("property=\"name\"")) {
                 fullName = currentLine.split("[<//>]")[83];
