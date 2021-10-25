@@ -22,7 +22,11 @@ public class Variable {
         variableValue++;
     }
 
-    public void decreaseVariableWorth() {variableValue--;}
+    public void decreaseVariableWorth() {
+        variableValue--;
+    }
 
-    public void resetWorth(){variableValue=0;}
+    public void resetWorth(){
+        variableValue=0;
+    }
 }
