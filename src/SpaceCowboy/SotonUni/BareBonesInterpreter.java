@@ -142,7 +142,6 @@ public class BareBonesInterpreter {
     private void increaseVariableWorth(String variableName){
         if(validateVariableWorth(variableName)){
             variables.get(variableName).increaseVariableWorth();
-            variables.put(variableName,variables.get(variableName));
         } else{
             errorMessage("Variable does not exist");
         }
