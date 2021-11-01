@@ -30,6 +30,10 @@ Formatting with examples
        endFunc
        goto Hello" : Creates a method called Hello and then runs the method Hello
 
+Functions should not be created in themselves, and all variables are global variables, meaning any you define or use
+in one function will work outside the function too.
+
+Functions must be initialised first before using them. You cannot access a function that has yet to be created.
 
 You should not use a ';' at the end of each line, and each line is taken as a new statement meaning you cannot combine
 multiple lines of code into 1. It will run (usually) but it will not read anything past it.

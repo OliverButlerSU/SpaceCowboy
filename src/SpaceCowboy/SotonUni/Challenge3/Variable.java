@@ -14,6 +14,10 @@ public class Variable {
         return variableValue;
     }
 
+    public void setVariableValue(int variableValue) {
+        this.variableValue = variableValue;
+    }
+
     String getVariableName(){
         return variableName;
     }

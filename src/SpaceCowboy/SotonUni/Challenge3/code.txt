@@ -13,6 +13,11 @@ func multiply
     decr X
 end
 endFunc
+func realMultiply
+    clear M
+    calculate M X * Y
+    print M
+endFunc
 clear X
 incr X
 incr X
@@ -23,6 +28,7 @@ incr Y
 incr Y
 incr Y
 clear Z
+goto realMultiply
 goto multiply
 #The above multiplies two numbers together
 #Prints value

@@ -66,7 +66,7 @@ public class BareBonesInterpreter {
 
     /**
      * Reads each line for each statement
-     * @param currentLine
+     * @param currentLine which line is currently being run
      */
     private void decodeLine(String[] currentLine){
         try{
@@ -121,6 +121,9 @@ public class BareBonesInterpreter {
                         errorMessage("Method name does not exist");
                     }
                     break;
+                case "calculate":
+                    variables.get(currentLine[1]).setVariableValue(calculateValue(currentLine));
+                    break;
                 default:
                     errorMessage("Invalid command / format");
                     break;
@@ -131,12 +134,41 @@ public class BareBonesInterpreter {
 
     }
 
+    /**
+     * Calculates operation consisting of adding, subtraction, multiplication, division and power
+     * @param currentLine
+     * @return calcualted value
+     */
+    private int calculateValue(String[] currentLine){
+        try{
+            int variable1 = getVariableValue(currentLine[2]);
+            int variable2 = getVariableValue(currentLine[4]);
+            String operator = currentLine[3];
 
-
+            switch (operator) {
+                case "+":
+                    return variable1 + variable2;
+                case "-":
+                    return variable1 - variable2;
+                case "*":
+                    return variable1 * variable2;
+                case "":
+                    return variable1 / variable2;
+                case "^":
+                    return (int) Math.pow(variable1, variable2);
+                default:
+                    errorMessage("Invalid operator");
+                    break;
+            }
+        }catch (Exception e){
+            errorMessage("Invalid operation");
+        }
+        return 0; //Shouldn't return this since it will never get run but who knows ¯\_(ツ)_/¯
+    }
 
     /**
      * Initialises a new variable with value 0. If the variable already exists, output an error message
-     * @param variableName name of variable to add
+     * @param variableName
      */
     private void addVariable(String variableName){
         if (!variables.containsKey(variableName)){
