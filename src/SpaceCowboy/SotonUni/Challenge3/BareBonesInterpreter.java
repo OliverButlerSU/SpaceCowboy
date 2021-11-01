@@ -18,8 +18,13 @@ public class BareBonesInterpreter {
     private List<String[]> codeText = new ArrayList<>();
     //Stores the line number a while loop is on
     private Stack<Integer> whileLine = new Stack<>();
+
     private Stack<Integer> methodLine = new Stack<>();
+
+
     private int lineNumber = 0;
+    //Ensures code does not run, only reading function for first time
+    private boolean readingFunction = false;
 
 
     /**
@@ -65,6 +70,15 @@ public class BareBonesInterpreter {
      */
     private void decodeLine(String[] currentLine){
         try{
+            if(currentLine[0].charAt(0) == '#'){
+                //Do nothing, it is a comment or is nothing
+                return;
+            }
+            if(readingFunction && !currentLine[0].equals("endFunc")){
+                //Do nothing, it is reading a function but not running it
+                return;
+            }
+
             switch(currentLine[0]){
                 case "clear":
                     addVariable(currentLine[1]);
@@ -86,16 +100,26 @@ public class BareBonesInterpreter {
                     }
                     break;
                 case "print":
-                    System.out.println(variables.get(currentLine[1]).getVariableValue());
+                    System.out.println(getVariableValue(currentLine[1]));
                     break;
                 case "func":
-                    //TODO: Methods
+                    readingFunction = true;
+                    addMethod(currentLine[1]);
                     break;
                 case "endFunc":
-                    //TODO: Endfunc
+                    if(readingFunction){
+                        readingFunction = false;
+                    } else{
+                        lineNumber = methodLine.pop();
+                    }
                     break;
-                case "#":
-                    //Do nothing
+                case "goto":
+                    methodLine.push(lineNumber);
+                    if(validateMethodName(currentLine[1])){
+                        lineNumber = methods.get(currentLine[1]);
+                    } else{
+                        errorMessage("Method name does not exist");
+                    }
                     break;
                 default:
                     errorMessage("Invalid command / format");
@@ -112,10 +136,10 @@ public class BareBonesInterpreter {
 
     /**
      * Initialises a new variable with value 0. If the variable already exists, output an error message
-     * @param variableName
+     * @param variableName name of variable to add
      */
     private void addVariable(String variableName){
-        if(!variables.containsKey(variableName)){
+        if (!variables.containsKey(variableName)){
             variables.put(variableName,new Variable(variableName));
         } else{
             variables.get(variableName).resetWorth();
@@ -170,6 +194,27 @@ public class BareBonesInterpreter {
             return true;
         }
         return false;
+    }
+
+
+    /**
+     * Finds out whether the function name exists
+     * @param methodName
+     * @return If variable exists
+     */
+    private boolean validateMethodName(String methodName){
+        if (methods.containsKey(methodName)){
+            return true;
+        }
+        return false;
+    }
+
+    private void addMethod(String methodName){
+        if (!validateMethodName(methodName)){
+            methods.put(methodName,lineNumber);
+        } else{
+            errorMessage("Method name already exists");
+        }
     }
 
 
