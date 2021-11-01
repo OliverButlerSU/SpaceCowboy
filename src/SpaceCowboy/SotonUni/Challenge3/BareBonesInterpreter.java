@@ -11,10 +11,14 @@ import java.util.Stack;
 public class BareBonesInterpreter {
     //variables -> [Key: Variable Name], [Value: Variable Value]
     private HashMap<String, Variable> variables = new HashMap<>();
+    //methods -> [Key: Method Name], [Value: Line number]
+    private HashMap<String, Integer> methods = new HashMap<>();
+
     //Stores all code
     private List<String[]> codeText = new ArrayList<>();
     //Stores the line number a while loop is on
     private Stack<Integer> whileLine = new Stack<>();
+    private Stack<Integer> methodLine = new Stack<>();
     private int lineNumber = 0;
 
 
@@ -56,7 +60,7 @@ public class BareBonesInterpreter {
 
 
     /**
-     * Reads each line for each statement,
+     * Reads each line for each statement
      * @param currentLine
      */
     private void decodeLine(String[] currentLine){
@@ -83,6 +87,15 @@ public class BareBonesInterpreter {
                     break;
                 case "print":
                     System.out.println(variables.get(currentLine[1]).getVariableValue());
+                    break;
+                case "func":
+                    //TODO: Methods
+                    break;
+                case "endFunc":
+                    //TODO: Endfunc
+                    break;
+                case "#":
+                    //Do nothing
                     break;
                 default:
                     errorMessage("Invalid command / format");
@@ -116,7 +129,7 @@ public class BareBonesInterpreter {
      * @return variableValue
      */
     private int getVariableValue(String variableName){
-        if(!validateVariableWorth(variableName)){
+        if (!validateVariableWorth(variableName)){
             errorMessage("Variable does not exist");
         }
         return variables.get(variableName).getVariableValue();
@@ -128,7 +141,7 @@ public class BareBonesInterpreter {
      * @param variableName
      */
     private void decreaseVariableWorth(String variableName){
-        if(validateVariableWorth(variableName)){
+        if (validateVariableWorth(variableName)){
             variables.get(variableName).decreaseVariableWorth();
         } else{
             errorMessage("Variable does not exist");
@@ -140,8 +153,8 @@ public class BareBonesInterpreter {
      * @param variableName
      */
     private void increaseVariableWorth(String variableName){
-        if(validateVariableWorth(variableName)){
-            variables.put(variableName,variables.get(variableName));
+        if (validateVariableWorth(variableName)){
+            variables.get(variableName).increaseVariableWorth();
         } else{
             errorMessage("Variable does not exist");
         }
@@ -153,7 +166,7 @@ public class BareBonesInterpreter {
      * @return If variable exists
      */
     private boolean validateVariableWorth(String variableName){
-        if(variables.containsKey(variableName)){
+        if (variables.containsKey(variableName)){
             return true;
         }
         return false;

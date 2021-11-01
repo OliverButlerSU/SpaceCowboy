@@ -91,7 +91,6 @@ public class BareBonesInterpreter {
         } catch(Exception e){
             errorMessage("Invalid command / format");
         }
-
     }
 
 
@@ -141,7 +140,7 @@ public class BareBonesInterpreter {
      */
     private void increaseVariableWorth(String variableName){
         if(validateVariableWorth(variableName)){
-            variables.put(variableName,variables.get(variableName));
+            variables.get(variableName).increaseVariableWorth();
         } else{
             errorMessage("Variable does not exist");
         }

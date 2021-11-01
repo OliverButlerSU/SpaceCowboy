@@ -5,9 +5,9 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException{
-        BareBonesInterpreter interpreter =
+    BareBonesInterpreter interpreter =
         new BareBonesInterpreter(
-            "C:\\Users\\Windows\\IdeaProjects\\Space Cowboys\\src\\SpaceCowboy\\SotonUni\\code.txt");
+            "C:\\Users\\olive\\IdeaProjects\\SpaceCowboy\\src\\SpaceCowboy\\SotonUni\\Challenge3\\code.txt");
 
         interpreter.runCode();
 
