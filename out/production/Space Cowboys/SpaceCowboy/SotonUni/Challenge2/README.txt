@@ -15,8 +15,9 @@ Formatting with examples
     - "clear X" : Creates a variable named X, anything past X will not be read
     - "incr X" : Increases the variable X by 1
     - "decr X" : Decreases the variable X by 1
-    - "while X not 0 do" : While X!=0, do the following lines of code
-    - "end" : End of a while loop
+    - "while X not 0 do" : While X is not 0 do something
+           decr X
+       end"
     - "print X" : Prints the value of X
 
 You should not use a ';' at the end of each line, and each line is taken as a new statement meaning you cannot combine
@@ -28,4 +29,3 @@ Indentation also does not matter, this is all cleared out in code anyway.
 
 All lines of code will run until an error is met, where in this case, the console will give an error which will state
 what went wrong and where (not in much detail though).
-
