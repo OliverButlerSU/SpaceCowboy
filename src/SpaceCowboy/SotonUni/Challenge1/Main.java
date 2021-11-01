@@ -1,21 +1,10 @@
-package SpaceCowboy.SotonUni;
+package SpaceCowboy.SotonUni.Challenge1;
 
 import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) throws IOException{
-
-
-        //Challenge 2
-
-        BareBonesInterpreter interpreter =
-        new BareBonesInterpreter(
-            "C:\\Users\\Windows\\IdeaProjects\\Space Cowboys\\src\\SpaceCowboy\\SotonUni\\code.txt");
-
-        interpreter.runCode();
-
-
         /*
         Challenge 1
 

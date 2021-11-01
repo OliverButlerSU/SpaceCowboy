@@ -1,4 +1,4 @@
-package SpaceCowboy.SotonUni;
+package SpaceCowboy.SotonUni.Challenge2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -141,7 +141,7 @@ public class BareBonesInterpreter {
      */
     private void increaseVariableWorth(String variableName){
         if(validateVariableWorth(variableName)){
-            variables.get(variableName).increaseVariableWorth();
+            variables.put(variableName,variables.get(variableName));
         } else{
             errorMessage("Variable does not exist");
         }

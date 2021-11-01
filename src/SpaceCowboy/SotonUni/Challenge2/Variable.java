@@ -1,4 +1,4 @@
-package SpaceCowboy.SotonUni;
+package SpaceCowboy.SotonUni.Challenge2;
 
 public class Variable {
 
