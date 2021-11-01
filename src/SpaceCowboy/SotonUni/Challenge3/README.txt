@@ -3,7 +3,7 @@ BareBonesInterpreter README:
 When initialising the "BareBonesInterpreter" class, you should have a direct path to the file you want to read. You
 can do this by doing: "shift" + "right-click" on the file, and selecting "Copy as path".
 
-There are 6 separate commands:
+There are many separate commands:
     - "clear" : Initialises the variable after it or resets it back to 0
     - "incr" : Increment the variable by 1
     - "decr" : Decrease the variable by 1
