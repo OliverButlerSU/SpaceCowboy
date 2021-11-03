@@ -3,7 +3,7 @@ BareBonesInterpreter README:
 When initialising the "BareBonesInterpreter" class, you should have a direct path to the file you want to read. You
 can do this by doing: "shift" + "right-click" on the file, and selecting "Copy as path".
 
-There are 6 separate commands:
+There are many separate commands:
     - "clear" : Initialises the variable after it or resets it back to 0
     - "incr" : Increment the variable by 1
     - "decr" : Decrease the variable by 1
@@ -14,6 +14,7 @@ There are 6 separate commands:
     - "func" : Declares a function between the function initialise line and "endFunc"
     - "endFunc" : Stops the function and goes back to original line
     - "goto" : Goes to function
+    - "calculate" : Calculates an operation consisting of +, -, *, / and ^
 
 Formatting with examples
     - "clear X" : Creates a variable named X, anything past X will not be read
@@ -29,6 +30,7 @@ Formatting with examples
            print X
        endFunc
        goto Hello" : Creates a method called Hello and then runs the method Hello
+    - "calculate W Y * Z" : Calculates Y * Z and stores in W
 
 Functions should not be created in themselves, and all variables are global variables, meaning any you define or use
 in one function will work outside the function too.
