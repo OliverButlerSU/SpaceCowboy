@@ -34,6 +34,8 @@ public class Draw {
 
         for(double t = 0; t < iterations; t+=incr){
 
+
+            //Another formulae I was originally going to use might add tomorrow
             //double newX = (R+r) * Math.cos(t) - (r+a) * Math.cos(((R+r)/r)*t);
             //double newY = (R+r) * Math.sin(t) - (r+a) * Math.sin(((R+r)/r)*t);
 
