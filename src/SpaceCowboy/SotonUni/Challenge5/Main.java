@@ -9,9 +9,9 @@ public class Main {
         (basically stolen all formulae from this)
 
         Some cool values that works well (look at above link for better detail of what values mean)
-        R = 110; -> Size of large circle radius
-        r = 15; -> Size of small circle radius
-        a = 20; -> distance away from centre of small circle
+        R -> Size of large circle radius
+        r -> Size of small circle radius
+        a -> distance away from centre of small circle
 
         Probably don't change these for now but do what you want
         incr = 0.01; -> The increment of each value calculated smaller = more values calculated so more accurate

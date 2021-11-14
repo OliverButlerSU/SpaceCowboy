@@ -31,6 +31,7 @@ public class Spirograph {
 
 
     public void setIncr(double incr) {
+        //Incr cannot be negative
         if(incr > 0){
             this.incr = incr;
         }
