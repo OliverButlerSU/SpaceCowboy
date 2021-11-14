@@ -1,15 +1,18 @@
 package SpaceCowboy.SotonUni.Challenge5;
 
 public class Draw {
-
-    private final Spirograph spirograph;
+    private final Equation equation;
     private final double speed;
     private final int iterations;
+    private double incr = 0.01;
 
-    public Draw(Spirograph spirograph, double speed, int iterations){
-        this.spirograph = spirograph;
+    public Draw(Equation equation, double speed, int iterations, double incr){
+        this.equation = equation;
         this.speed = speed;
         this.iterations = iterations;
+        if(incr > 0){
+            this.incr = incr;
+        }
     }
 
 
@@ -17,16 +20,8 @@ public class Draw {
      * Draws the spirograph
      */
     public void draw(){
-
-        final double R = spirograph.getR();
-        final double r = spirograph.getr();
-        final double a = spirograph.getA();
-        final double incr = spirograph.getIncr();
-
-
-        double lastX = spirograph.calculateX(0);
-        double lastY = spirograph.calculateY(0);
-
+        double lastX = equation.calculateX(0);
+        double lastY = equation.calculateY(0);
 
         Turtle draw = new Turtle(lastX,lastY);
         draw.speed(speed);
@@ -34,17 +29,11 @@ public class Draw {
 
         for(double t = 0; t < iterations; t+=incr){
 
-
-            //Another formulae I was originally going to use might add tomorrow
-            //double newX = (R+r) * Math.cos(t) - (r+a) * Math.cos(((R+r)/r)*t);
-            //double newY = (R+r) * Math.sin(t) - (r+a) * Math.sin(((R+r)/r)*t);
-
-            double newX = spirograph.calculateX(t);
-            double newY = spirograph.calculateY(t);
+            double newX = equation.calculateX(t);
+            double newY = equation.calculateY(t);
 
             double lengthX = newX - lastX;
             double lengthY = newY - lastY;
-
 
             lastX = newX;
             lastY = newY;

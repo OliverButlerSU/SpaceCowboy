@@ -13,9 +13,19 @@ like a button or simple UI elements, it does everything I wanted it to be able t
 a damn line.
 
 
-Basically it works using these equations (going to do more soon just found these cool):
-x(t) = (R+r)cos(r/R *t) - a*cos((1+r/R)t)
-x(t) = (R+r)sin(r/R *t) - a*sin((1+r/R)t)
+Currently there are three equations used:
+
+  Epicycloid:
+  x(t) = (R+r)cos(r/R *t) - a*cos((1+r/R)t)
+  x(t) = (R+r)sin(r/R *t) - a*sin((1+r/R)t)
+
+  Hypercloid:
+  x(t) = (R-r)cos(r/R*t) + a*cos((1-r/R)t);
+  y(t) = (R-r)sin(r/R*t) - a*sin((1-r/R)t);
+
+  Other shape (I couldn't find where I originally got it from so IDK the shape name):
+  x(t) = (R+r)cos(t) - (r+a)cos(((R+r)/r)t);
+  y(t) = (R+r)sin(t) - (r+a)sin(((R+r)/r)t);
 
 where:
         R -> Size of large circle radius
