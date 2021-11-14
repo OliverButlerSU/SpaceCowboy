@@ -6,7 +6,7 @@ public class Main {
         /*
         Resources used:
         http://www.mathematische-basteleien.de/spirographs.htm#top
-        (basically stolen all formulae from this)
+        (basically stolen all formula from this)
 
         Some cool values that works well (look at above link for better detail of what values mean)
         R -> Size of large circle radius
