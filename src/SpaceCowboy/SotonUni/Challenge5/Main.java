@@ -17,6 +17,7 @@ public class Main {
         incr = 0.01; -> The increment of each value calculated smaller = more values calculated so more accurate
         speed = 0.1; -> How fast it draws (probably stick around 0.1 to 1) smaller = faster
         iterations = 100 -> How many value it calculates where the amount done = iterations / incr
+        size = 1 -> How much you want to scale it by
          */
 
         //Change for values you want it to be (just mess around with it that's how I did it)
@@ -29,9 +30,9 @@ public class Main {
         Epicycloid epicycloid = new Epicycloid(spiro2);
         OtherShape otherShape = new OtherShape(spiro2);
 
-        Draw draw1 = new Draw(hypercloid, 0.01, 1000, 0.01);
-        Draw draw2 = new Draw(epicycloid, 0.01, 1000, 0.01);
-        Draw draw3 = new Draw(otherShape, 0.01, 1000, 0.01);
+        Draw draw1 = new Draw(hypercloid, 0.01, 1000, 0.01, 1);
+        Draw draw2 = new Draw(epicycloid, 0.01, 1000, 0.01, 1);
+        Draw draw3 = new Draw(otherShape, 0.01, 1000, 0.01, -2);
 
         draw3.draw();
     }
